@@ -1,51 +1,50 @@
 import React from "react";
-import Jumbotron from "../js/components/Jumbotron";
-import Card from "../js/components/Card";
+import Navbar from "../js/components/Navbar/Navbar";
+import Jumbotron from "../js/components/Jumbotron/Jumbotron";
+import Card from "../js/components/Card/Card";
+import Footer from "../js/components/Footer/Footer";
 
-function Home() {
-  return (
-    <div>
-      <Navbar />
-      <Jumbotron />
+const Home = () => {
+    const tours = [
+        {
+            image: "https://picsum.photos/id/10/600/400",
+            title: "Tour Aventura",
+            description: "Experiencias extremas en la naturaleza"
+        },
+        {
+            image: "https://picsum.photos/id/11/600/400",
+            title: "Tour Cultural",
+            description: "Conoce tradiciones ancestrales"
+        },
+        {
+            image: "https://picsum.photos/id/12/600/400",
+            title: "Tour Playa",
+            description: "Relájate en paraísos tropicales"
+        },
+        {
+            image: "https://picsum.photos/id/13/600/400",
+            title: "Tour Montaña",
+            description: "Escaladas inolvidables"
+        }
+    ];
 
-      <div className="container mt-4">
-        <div className="row">
-          <div className="col-md-3">
-            <Card 
-              image="https://via.placeholder.com/500x325"
-              title="Card One"
-              text="Este es el contenido de la primera tarjeta."
-              buttonLabel="Find Out More!" 
-            />
-          </div>
-          <div className="col-md-3">
-            <Card 
-              image="https://via.placeholder.com/500x325"
-              title="Card Two"
-              text="Texto personalizado para la segunda tarjeta."
-              buttonLabel="Learn More" 
-            />
-          </div>
-          <div className="col-md-3">
-            <Card 
-              image="https://via.placeholder.com/500x325"
-              title="Card Three"
-              text="Contenido de la tercera tarjeta con texto distinto."
-              buttonLabel="Discover" 
-            />
-          </div>
-          <div className="col-md-3">
-            <Card 
-              image="https://via.placeholder.com/500x325"
-              title="Card Four"
-              text="Cuarta tarjeta con su propio contenido."
-              buttonLabel="Explore" 
-            />
-          </div>
+    return (
+        <div className="d-flex flex-column min-vh-100">
+            <Navbar />
+            <Jumbotron />
+            <div className="container my-4 flex-grow-1">
+                <h2 className="text-center mb-4 fw-bold">Nuestros Tours</h2>
+                <div className="row row-cols-1 row-cols-md-2 row-cols-lg-4 g-4">
+                    {tours.map((tour, index) => (
+                        <div className="col" key={index}>
+                            <Card {...tour} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+            <Footer />
         </div>
-      </div>
-    </div>
-  );
-}
+    );
+};
 
-export default Home;
+export default Home; 
